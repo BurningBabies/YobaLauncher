@@ -10,6 +10,15 @@ public class Bar : MonoBehaviour {
     float startWidth;
 
     public float speed = 1100f;
+
+    public float power
+    {
+        get
+        {
+            return mask.sizeDelta.x;
+        }
+    }
+
     void Start()
     {
         //DOTween.Init(false, false, LogBehaviour.ErrorsOnly);
@@ -50,4 +59,12 @@ public class Bar : MonoBehaviour {
 	
 	void Update () {
 	}
+
+    public void FadeOut() {
+        StopAllCoroutines();
+        foreach (Animator item in GetComponentsInChildren<Animator>())
+        {
+            item.SetTrigger("Fade");
+        }
+    }
 }
